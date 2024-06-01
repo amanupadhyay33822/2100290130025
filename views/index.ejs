@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Topics</title>
+</head>
+<body>
+    <h1>Trending Topics</h1>
+    <a href="/scrape" id="scrape-link">Click here to run the script</a>
+    <% if (trend) { %>
+        <div id="trending-topics">
+            <p>These are the most happening topics as on <%= trend.timestamp %>:</p>
+            <ul>
+                <li><%= trend.nameoftrend1 %></li>
+                <li><%= trend.nameoftrend2 %></li>
+                <li><%= trend.nameoftrend3 %></li>
+                <li><%= trend.nameoftrend4 %></li>
+                <li><%= trend.nameoftrend5 %></li>
+            </ul>
+        </div>
+    <% } else { %>
+        <div id="trending-topics">
+            <p>No trends available at the moment.</p>
+        </div>
+    <% } %>
+    <script>
+        document.getElementById('scrape-link').addEventListener('click', function(event) {
+            event.preventDefault();
+            fetch('/scrape')
+                .then(response => response.json())
+                .then(data => {
+                    const trendingTopicsDiv = document.getElementById('trending-topics');
+                    trendingTopicsDiv.innerHTML = `
+                        <p>These are the most happening topics as on ${new Date(data.timestamp)}:</p>
+                        <ul>
+                            <li>${data.nameoftrend1}</li>
+                            <li>${data.nameoftrend2}</li>
+                            <li>${data.nameoftrend3}</li>
+                            <li>${data.nameoftrend4}</li>
+                            <li>${data.nameoftrend5}</li>
+                        </ul>
+                    `;
+                });
+        });
+    </script>
+</body>
+</html>

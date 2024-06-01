@@ -1,18 +1,22 @@
 {
-  "name": "affrod-medical",
+  "name": "barsati-film",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.2",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "mongoose": "^8.4.1",
     "nodemon": "^3.1.2",
+    "puppeteer": "^22.10.0",
     "uuid": "^9.0.1"
   }
 }
